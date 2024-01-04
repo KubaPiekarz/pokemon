@@ -59,7 +59,7 @@
               user experience. You can check repository
               <a
                 class="text-purple-500"
-                href="https://pokeapi.co/"
+                href="https://github.com/KubaPiekarz/pokemon"
                 target="_blank"
                 >here</a
               >
