@@ -58,7 +58,7 @@ export default {
 
     const goTo = (routeName, typeName) => {
       router.push({ name: routeName, params: { name: typeName } });
-      toggleDropdown(false);
+      isDropdownVisible.value = false
     };
     
     const toggleDropdown = () => {
