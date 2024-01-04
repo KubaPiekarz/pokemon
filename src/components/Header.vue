@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="bg-blue-500 p-4 text-white flex justify-between">
+    <header class="bg-blue-500 p-4 text-white flex justify-between" ref="target">
       <div
         class="flex items-center justify-center cursor-pointer"
         @click="goTo('PokemonList')"
@@ -14,10 +14,8 @@
         </p>
         <div
           class="relative"
-          @mouseover="toggleDropdown(true)"
-          @mouseleave="toggleDropdown(false)"
         >
-          <span class="cursor-pointer hover:underline">Types</span>
+          <span class="cursor-pointer hover:underline" @click="toggleDropdown">Types</span>
           <div
             v-if="isDropdownVisible"
             class="dropdown-content absolute bg-blue-500 text-white py-2 max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300"
@@ -48,6 +46,7 @@ import { store } from "@/router";
 import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { GET_TYPES } from "../store/types/pokemons.type";
+import { onClickOutside } from "@vueuse/core";
 
 export default {
   name: "App",
@@ -61,6 +60,16 @@ export default {
       router.push({ name: routeName, params: { name: typeName } });
       toggleDropdown(false);
     };
+    
+    const toggleDropdown = () => {
+      isDropdownVisible.value =! isDropdownVisible.value;
+    };
+
+    const target = ref(null);
+
+		onClickOutside(target, () => {
+      isDropdownVisible.value = false
+    })
 
     onMounted(async () => {
       if (!allTypes.value?.length) {
@@ -70,11 +79,8 @@ export default {
       }
     });
 
-    const toggleDropdown = (isVisible) => {
-      isDropdownVisible.value = isVisible;
-    };
 
-    return { allTypes, isDropdownVisible, toggleDropdown, goTo, router };
+    return { allTypes, isDropdownVisible, toggleDropdown, goTo, router, target };
   },
 };
 </script>
