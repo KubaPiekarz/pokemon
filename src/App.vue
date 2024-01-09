@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-light text-darkGray min-h-screen dark:bg-darkGray dark:text-light">
     <Header />
     <router-view></router-view>
   </div>
@@ -7,11 +7,23 @@
 
 <script>
 import Header from "./components/Header.vue";
+import { computed, watch } from "vue";
+import { store } from "@/router";
+
+
 export default {
   name: "App",
   components: {
     Header,
-  },
+  },setup(){
+    const darkMode = computed(() => store.getters.darkMode);
+    document.body.classList.toggle('dark', darkMode.value);
+
+    watch(darkMode, (newDarkMode) => {
+      document.body.classList.toggle('dark', newDarkMode);
+    });
+
+  }
 };
 </script>
 
@@ -20,11 +32,5 @@ export default {
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-color: #FAFAFA;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
 }
 </style>

@@ -4,6 +4,7 @@ import PokemonList from "../components/PokemonList.vue";
 import AboutAuthor from "../components/AboutAuthor.vue";
 import TypeDetails from "../components/TypeDetails.vue";
 import pokemons from "../store/modules/pokemons.module.js";
+import darkMode from "../store/modules/darkMode.module.js";
 
 const store = createStore({
   state() {
@@ -14,6 +15,7 @@ const store = createStore({
   getters: {},
   modules: {
     pokemons,
+    darkMode
   },
 });
 

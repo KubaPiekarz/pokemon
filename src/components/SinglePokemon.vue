@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shadow shadow-gray-300 single-pokemon bg-gray-300 p-4 rounded-md flex flex-col items-center justify-center w-48 text-gray-200 w-60"
+    class="shadow shadow-gray bg-lightGray p-4 rounded-md flex flex-col items-center justify-center w-48 text-light w-60 dark:bg-gray"
   >
     <img
       class="pokemon-img rounded-md mb-4"
@@ -8,7 +8,7 @@
       alt="Pokemon Image"
     />
     <div
-      class="pokemon-details bg-gray-400 w-full rounded-b-md p-4 shadow shadow-gray-300"
+      class="bg-gray w-full rounded-b-md p-4 shadow shadow-darkGray dark:bg-darkGray"
     >
       <h3 class="text-xl uppercase text-center mb-2">{{ pokemon.name }}</h3>
       <div class="pokemon-types flex justify-center gap-4">

@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-bold mt-6 uppercase">{{ ability?.name }}</h1>
       <div class="flex flex-wrap justify-center">
         <section
-          class="w-full md:w-1/2 border-2 border-purple-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-purple rounded-lg"
           v-if="
             showSection(
               'Double Damage From',
@@ -24,7 +24,7 @@
         </section>
 
         <section
-          class="w-full md:w-1/2 border-2 border-purple-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-purple rounded-lg"
           v-if="
             showSection(
               'Double Damage To',
@@ -44,7 +44,7 @@
         </section>
 
         <section
-          class="w-full md:w-1/2 border-2 border-blue-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-primary rounded-lg"
           v-if="
             showSection(
               'Half Damage From',
@@ -64,7 +64,7 @@
         </section>
 
         <section
-          class="w-full md:w-1/2 border-2 border-blue-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-primary rounded-lg"
           v-if="
             showSection(
               'Half Damage To',
@@ -84,7 +84,7 @@
         </section>
 
         <section
-          class="w-full md:w-1/2 border-2 border-green-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-secondary rounded-lg"
           v-if="
             showSection(
               'No Damage From',
@@ -104,7 +104,7 @@
         </section>
 
         <section
-          class="w-full md:w-1/2 border-2 border-green-500 rounded-lg"
+          class="w-full md:w-1/2 border-2 border-secondary rounded-lg"
           v-if="
             showSection('No Damage To', ability?.damage_relations?.no_damage_to)
           "

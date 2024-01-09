@@ -3,13 +3,13 @@
     <div class="flex gap-4 mb-4">
       <button
         @click="selectAll"
-        class="px-4 py-2 bg-blue-500 text-white rounded-md"
+        class="px-4 py-2 bg-primary text-light rounded-md"
       >
         All
       </button>
       <button
         @click="selectFavourite"
-        class="px-4 py-2 bg-green-500 text-white rounded-md"
+        class="px-4 py-2 bg-secondary text-light rounded-md"
         :class="{
           'opacity-75': !favouritePokemons?.length,
           'cursor-default': !favouritePokemons?.length,
@@ -18,16 +18,16 @@
         Favourite Pokemons
       </button>
     </div>
-    <div class="flex items-center justify-end mb-4 relative">
+    <div class="flex items-center justify-end mb-4 relative gap-2">
       <input
         v-model="searchTerm"
         type="text"
         placeholder="Search Pokemon"
-        class="border p-2 rounded-md"
+        class="border border-lightGray p-2 rounded-md bg-light dark:bg-lightGray dark:border-darkGray dark:text-darkGray"
       />
       <button
         @click="searchPokemon"
-        class="px-4 py-2 bg-purple-500 text-white rounded-md"
+        class="px-4 py-2 bg-purple text-light rounded-md"
         :class="{ 'opacity-75': !searchTerm, 'cursor-default': !searchTerm }"
       >
         Search
@@ -35,9 +35,9 @@
 
       <div
         v-if="searchError"
-        class="text-red-500 ml-4 absolute left-0 top-full sm:left-full sm:w-full sm:top-auto"
+        class="text-error ml-4 absolute left-0 top-full sm:left-full sm:w-full sm:top-auto"
       >
-        Pokemon with name <i class="text-blue-500">{{ searchTerm }}</i> not
+        Pokemon with name <i class="text-primary">{{ searchTerm }}</i> not
         found. Please try again.
       </div>
     </div>
@@ -54,19 +54,22 @@
     <button
       @click="getMorePokemons"
       v-show="showAll"
-      class="mt-4 px-4 py-2 bg-purple-500 text-white rounded-md"
+      class="mt-4 px-4 py-2 bg-purple text-light rounded-md"
     >
       Get More Pokemons
     </button>
   </div>
   <Teleport to="body">
-    <Transition name="modal" class="cursor-pointer">
+    <Transition
+      name="fade"
+      class="cursor-pointer bg-gray/75"
+    >
       <div
         v-if="showPokemonDetails"
-        class="modal-mask fixed inset-0 flex flex-center justify-center"
+        class="modal-mask fixed inset-0 block sm:flex sm:flex-center sm:justify-center"
       >
         <div
-          class="modal-container cursor-default"
+          class="modal-container cursor-default m-auto"
           ref="modalContainer"
           @click.stop
         >
@@ -199,4 +202,25 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>
