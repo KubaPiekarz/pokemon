@@ -37,7 +37,7 @@ const actions = {
         })
       );
 
-      const updatedPokemons = state.pokemons.concat(additionalPokemons);
+      const updatedPokemons = state.pokemons.length ? additionalPokemons : state.pokemons.concat(additionalPokemons);
 
       if (getItem("pokemons") === null) {
         commit(SET_POKEMONS, updatedPokemons);
